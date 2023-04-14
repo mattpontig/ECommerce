@@ -37,7 +37,7 @@ class DatabaseClassSingleton
     {
         try {
             $this->_connection = new mysqli($this->dbhost, $this->username,  $this->password, $this->dbname);
-            writeLog("Connection created");
+            //writeLog("Connection created");
             // Error handling
             if (mysqli_connect_errno()) {
                 throw new Exception("Could not connect to database.");
