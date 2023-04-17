@@ -1,5 +1,6 @@
 <?php
     $result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti");
+    foreach ($result as $row) {
     $s = '
     <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                     <div class="product-item bg-light mb-4">
@@ -24,9 +25,9 @@
 </div>
 </div>
 </div>';
-    foreach ($result as $row) {
+
         echo $s;
-        echo '<a class="h6 text-decoration-none text-truncate" href="getSingProd.php.php?id=' . $row["id"] . '">' . $row["nome"] . "</a>";
+        echo '<a class="h6 text-decoration-none text-truncate" href="detail.php?id=' . $row["id"] . '">' . $row["nome"] . "</a>";
         echo $s2;
         echo '<h5>'.$row["prezzo"] .'</h5><h6 class="text-muted ml-2"><del>' . $row["prezzo"].'</del></h6>';
         echo $s3;
