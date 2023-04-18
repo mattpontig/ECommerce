@@ -1,5 +1,6 @@
 <?php
 $pieces = explode(";", $_COOKIE['cart']);
+echo ($_COOKIE['cart']);
 foreach ($pieces as $p){
 $result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti where id=". $p);
 foreach ($result as $row) {

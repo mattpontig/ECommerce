@@ -29,7 +29,7 @@
 <body>
 
     <?php include "navbar.php";
-        session_start();?>
+    ?>
 
     <!-- Carousel Start -->
     <div class="container-fluid mb-3">

@@ -1,4 +1,5 @@
-    <!-- Topbar Start -->
+
+   <!-- Topbar Start -->
     <div class="container-fluid">
         <div class="row bg-secondary py-1 px-xl-5">
             <div class="col-lg-6 d-none d-lg-block">
@@ -51,7 +52,7 @@
         </div>
         <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
             <div class="col-lg-4">
-                <a href="" class="text-decoration-none">
+                <a href="" class="text-decoration-none" href='index.php'>
                     <span class="h1 text-uppercase text-primary bg-dark px-2">Pontig</span>
                     <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
                 </a>
