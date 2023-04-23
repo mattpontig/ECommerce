@@ -29,14 +29,14 @@
   <?php include "navbar.php" ?>
     <div class="container mt-5">
       <h1 class="text-center">Login</h1>
-      <form>
+      <form action="chk/chkLogin.php" method="post">
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email">
+          <input type="email" class="form-control" id="email" name='txtEm' placeholder="Inserisci la tua email">
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Inserisci la tua password">
+          <input type="password" class="form-control" id="password" name='txtPwd' placeholder="Inserisci la tua password">
         </div>
         <button type="submit" class="btn btn-primary">Login</button>
       </form>

@@ -1,8 +1,6 @@
 <?php
-$pieces = explode(";", $_COOKIE['cart']);
-echo ($_COOKIE['cart']);
-foreach ($pieces as $p){
-$result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti where id=". $p);
+if(isset($_SESSION["id"])){
+$result = DatabaseClassSingleton::getInstance()->Select("Select * from carrello where id=". $_SESSION["id"]);
 foreach ($result as $row) {
 $s =                    '<tr>
                             <td class="align-middle"><img src="img/product-5.jpg" alt="" style="width: 50px;"> '. $row["nome"] .'/td>
@@ -14,7 +12,7 @@ $s =                    '<tr>
                                         <i class="fa fa-minus"></i>
                                         </button>
                                     </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="1">
+                                    <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="' . $part[1] .'">
                                     <div class="input-group-btn">
                                         <button class="btn btn-sm btn-primary btn-plus">
                                             <i class="fa fa-plus"></i>

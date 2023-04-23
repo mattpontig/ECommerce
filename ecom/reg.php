@@ -29,22 +29,22 @@
   <?php include "navbar.php" ?>
     <div class="container mt-5">
       <h1 class="text-center">Registrazione</h1>
-      <form>
+      <form action="chk/chkReg.php" method="post">
         <div class="form-group">
           <label for="nome">Name</label>
-          <input type="text" class="form-control" id="name" placeholder="Inserisci il tuo nome">
+          <input type="text" class="form-control" name="name" placeholder="Inserisci il tuo nome">
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" class="form-control" id="email" placeholder="Inserisci la tua email">
+          <input type="email" class="form-control" name="email" placeholder="Inserisci la tua email">
         </div>
         <div class="form-group">
           <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Inserisci la tua password">
+          <input type="password" class="form-control" name="password" placeholder="Inserisci la tua password">
         </div>
         <div class="form-group">
           <label for="confirmPassword">Conferma Password</label>
-          <input type="password" class="form-control" id="confirmPassword" placeholder="Conferma la tua password">
+          <input type="password" class="form-control" name="confirmPassword" placeholder="Conferma la tua password">
         </div>
         <button type="submit" class="btn btn-primary">Registra</button>
       </form>

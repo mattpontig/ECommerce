@@ -9,7 +9,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="../img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -60,7 +60,7 @@
                         </tr>
                     </thead>
                     <tbody class="align-middle">
-                        <?php include 'cartElem.php' ?>
+                        <?php include 'carrello/cartElem.php' ?>
                     </tbody>
                 </table>
             </div>
@@ -78,7 +78,7 @@
                     <div class="border-bottom pb-2">
                         <div class="d-flex justify-content-between mb-3">
                             <h6>Subtotal</h6>
-                            <h6>$150</h6>
+                            <h6><?php include 'calcTotale.php' ?></h6>
                         </div>
                         <div class="d-flex justify-content-between">
                             <h6 class="font-weight-medium">Shipping</h6>
