@@ -66,6 +66,8 @@ class DatabaseClassSingleton
     {
         try {
 
+            echo $query;
+            echo print_r($params);
             $stmt = $this->executeStatement($query, $params);
             $stmt->close();
 

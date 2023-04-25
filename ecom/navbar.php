@@ -88,7 +88,7 @@
                 </a>
                 <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
                     <div class="navbar-nav w-100">
-                        <?php include "getCat.php" ?>
+                        <?php include "home/getCat.php" ?>
                     </div>
                 </nav>
             </div>
@@ -117,11 +117,11 @@
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                             <a href="" class="btn px-0">
                                 <i class="fas fa-heart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">0</span>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><?php include "home/countPref.php";?></span>
                             </a>
-                            <a href="" class="btn px-0 ml-3">
+                            <a href="cart.php" class="btn px-0 ml-3">
                                 <i class="fas fa-shopping-cart text-primary"></i>
-                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><?php //include "carrello/countProd.php";?></span>
+                                <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><?php include "carrello/countProd.php";?></span>
                             </a>
                         </div>
                     </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 24, 2023 alle 17:42
+-- Creato il: Apr 25, 2023 alle 12:05
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -34,6 +34,15 @@ CREATE TABLE `acquisto` (
   `idCarrello` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `acquisto`
+--
+
+INSERT INTO `acquisto` (`id`, `quantit`, `idArticolo`, `idCarrello`) VALUES
+(2, 1, 1, 1),
+(3, 1, 1, 1),
+(4, 1, 2, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -45,6 +54,13 @@ CREATE TABLE `carrello` (
   `data` datetime NOT NULL,
   `idUtente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `carrello`
+--
+
+INSERT INTO `carrello` (`id`, `data`, `idUtente`) VALUES
+(1, '0000-00-00 00:00:00', 14);
 
 -- --------------------------------------------------------
 
@@ -96,6 +112,25 @@ CREATE TABLE `ordini` (
 -- --------------------------------------------------------
 
 --
+-- Struttura della tabella `preferiti`
+--
+
+CREATE TABLE `preferiti` (
+  `id` int(11) NOT NULL,
+  `idProd` int(11) NOT NULL,
+  `idUtente` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `preferiti`
+--
+
+INSERT INTO `preferiti` (`id`, `idProd`, `idUtente`) VALUES
+(1, 1, 14);
+
+-- --------------------------------------------------------
+
+--
 -- Struttura della tabella `prodotti`
 --
 
@@ -128,9 +163,16 @@ INSERT INTO `prodotti` (`id`, `nome`, `des`, `quant`, `prezzo`, `idCat`, `sconto
 CREATE TABLE `utente` (
   `id` int(11) NOT NULL,
   `nome` varchar(16) NOT NULL,
-  `email` varchar(16) NOT NULL,
-  `password` int(32) NOT NULL
+  `email` varchar(32) NOT NULL,
+  `password` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dump dei dati per la tabella `utente`
+--
+
+INSERT INTO `utente` (`id`, `nome`, `email`, `password`) VALUES
+(14, 'Pontig', 'tione004@gmail.com', 'e10adc3949ba59abbe56e057f20f883e');
 
 --
 -- Indici per le tabelle scaricate
@@ -173,6 +215,14 @@ ALTER TABLE `ordini`
   ADD UNIQUE KEY `idUtente` (`idUtente`);
 
 --
+-- Indici per le tabelle `preferiti`
+--
+ALTER TABLE `preferiti`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idProd` (`idProd`,`idUtente`),
+  ADD KEY `idUtente` (`idUtente`);
+
+--
 -- Indici per le tabelle `prodotti`
 --
 ALTER TABLE `prodotti`
@@ -193,13 +243,13 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `acquisto`
 --
 ALTER TABLE `acquisto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT per la tabella `carrello`
 --
 ALTER TABLE `carrello`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `categoria`
@@ -220,6 +270,12 @@ ALTER TABLE `ordini`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT per la tabella `preferiti`
+--
+ALTER TABLE `preferiti`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT per la tabella `prodotti`
 --
 ALTER TABLE `prodotti`
@@ -229,7 +285,7 @@ ALTER TABLE `prodotti`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Limiti per le tabelle scaricate
@@ -260,6 +316,13 @@ ALTER TABLE `comstar`
 --
 ALTER TABLE `ordini`
   ADD CONSTRAINT `ordini_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Limiti per la tabella `preferiti`
+--
+ALTER TABLE `preferiti`
+  ADD CONSTRAINT `preferiti_ibfk_1` FOREIGN KEY (`idProd`) REFERENCES `prodotti` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `preferiti_ibfk_2` FOREIGN KEY (`idUtente`) REFERENCES `utente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `prodotti`

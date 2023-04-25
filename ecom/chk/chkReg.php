@@ -12,9 +12,10 @@
             header("location: ../register.php?msg=Password differenti");
         }else{
             $pwd = md5($_POST["password"]);
+            $name = $_POST["name"];
+            $em = $_POST["email"];
             
-            DatabaseClassSingleton::getInstance()->Insert("Insert into utente( `nome` , `email`,`password`) values ( ? , ? ,?)", [
-                'sss', $_POST["name"], $_POST["email"],$pwd]);
+            DatabaseClassSingleton::getInstance()->Insert("INSERT INTO utente (nome , email,password) VALUES ( ?  , ? ,?)", ['sss', $name, $em,$pwd]);
         }
     }
 ?>

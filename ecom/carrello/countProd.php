@@ -1,7 +1,11 @@
 <?php
-    if(isset($_COOKIE["cart"])){
-        $v = json_decode($_COOKIE['cart']);
-        echo count($v);
-    }
-    else echo '0';
+$t = 0;
+    if(isset($_SESSION["carrelloId"])){
+        $result = DatabaseClassSingleton::getInstance()->Select("Select * from acquisto where idCarrello=". $_SESSION["carrelloId"]);
+        foreach ($result as $row) {
+          $t = $t+1;
+        }
+      }
+    echo $t;
+
 ?>

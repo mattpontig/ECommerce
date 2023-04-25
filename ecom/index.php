@@ -28,7 +28,7 @@
 
 <body>
 
-    <?php include "navbar.php";
+    <?php session_start();include "navbar.php";
     ?>
 
     <!-- Carousel Start -->
@@ -110,7 +110,7 @@
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
                 <div class="d-flex align-items-center bg-light mb-4" style="padding: 30px;">
                     <h1 class="fa fa-shipping-fast text-primary m-0 mr-2"></h1>
-                    <h5 class="font-weight-semi-bold m-0">Free Shipping</h5>
+                    <h5 class="font-weight-semi-bold m-0">Free Shipping Over $30</h5>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
@@ -156,7 +156,7 @@
     <div class="container-fluid pt-5 pb-3">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Featured Products</span></h2>
         <div class="row px-xl-5">
-                <?php include "getProd.php";?>
+                <?php include "home/getProd.php";?>
         </div>
     </div>
     <!-- Products End -->
