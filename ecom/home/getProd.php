@@ -1,7 +1,7 @@
 <?php
 $w = '1';
 if(isset($_SESSION['cat']))
-    $w = 'id= "' .$_SESSION['cat']. '"';
+    $w = 'id=' . $_SESSION['cat'];
     $result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti where " . $w);
     foreach ($result as $row) {
     $s = '

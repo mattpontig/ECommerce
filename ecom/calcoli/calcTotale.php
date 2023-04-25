@@ -1,7 +1,7 @@
 <?php
 $tp = 0;
 $s = 0;
-if(isset($_SESSION["carrelloId"])){
+if(isset($_SESSION["idCarrello"])){
   $tp = $_SESSION['totProd'];
   if($tp >= "30"){
     $s = 10;

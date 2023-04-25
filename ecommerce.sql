@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 25, 2023 alle 12:05
+-- Creato il: Apr 25, 2023 alle 18:18
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `acquisto` (
-  `id` int(11) NOT NULL,
+  `idC` int(11) NOT NULL,
   `quantit` int(11) NOT NULL,
   `idArticolo` int(11) NOT NULL,
   `idCarrello` int(11) NOT NULL
@@ -38,10 +38,12 @@ CREATE TABLE `acquisto` (
 -- Dump dei dati per la tabella `acquisto`
 --
 
-INSERT INTO `acquisto` (`id`, `quantit`, `idArticolo`, `idCarrello`) VALUES
-(2, 1, 1, 1),
-(3, 1, 1, 1),
-(4, 1, 2, 1);
+INSERT INTO `acquisto` (`idC`, `quantit`, `idArticolo`, `idCarrello`) VALUES
+(40, 1, 1, 7),
+(41, 1, 1, 7),
+(42, 1, 1, 7),
+(43, 1, 2, 7),
+(44, 1, 1, 7);
 
 -- --------------------------------------------------------
 
@@ -60,7 +62,8 @@ CREATE TABLE `carrello` (
 --
 
 INSERT INTO `carrello` (`id`, `data`, `idUtente`) VALUES
-(1, '0000-00-00 00:00:00', 14);
+(7, '0000-00-00 00:00:00', 17),
+(8, '0000-00-00 00:00:00', 18);
 
 -- --------------------------------------------------------
 
@@ -70,16 +73,17 @@ INSERT INTO `carrello` (`id`, `data`, `idUtente`) VALUES
 
 CREATE TABLE `categoria` (
   `id` int(11) NOT NULL,
-  `tipo` varchar(16) NOT NULL
+  `tipo` varchar(16) NOT NULL,
+  `img` varchar(64) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `categoria`
 --
 
-INSERT INTO `categoria` (`id`, `tipo`) VALUES
-(1, 'Elettronica'),
-(2, 'Libri');
+INSERT INTO `categoria` (`id`, `tipo`, `img`) VALUES
+(1, 'Elettronica', NULL),
+(2, 'Libri', NULL);
 
 -- --------------------------------------------------------
 
@@ -126,7 +130,7 @@ CREATE TABLE `preferiti` (
 --
 
 INSERT INTO `preferiti` (`id`, `idProd`, `idUtente`) VALUES
-(1, 1, 14);
+(3, 2, 17);
 
 -- --------------------------------------------------------
 
@@ -172,7 +176,8 @@ CREATE TABLE `utente` (
 --
 
 INSERT INTO `utente` (`id`, `nome`, `email`, `password`) VALUES
-(14, 'Pontig', 'tione004@gmail.com', 'e10adc3949ba59abbe56e057f20f883e');
+(17, 'Pontig', 'tione004@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
+(18, 'r', 'mattia.pontig04@gmail.com', 'e10adc3949ba59abbe56e057f20f883e');
 
 --
 -- Indici per le tabelle scaricate
@@ -182,7 +187,7 @@ INSERT INTO `utente` (`id`, `nome`, `email`, `password`) VALUES
 -- Indici per le tabelle `acquisto`
 --
 ALTER TABLE `acquisto`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`idC`),
   ADD KEY `idArticolo` (`idArticolo`,`idCarrello`),
   ADD KEY `idCarrello` (`idCarrello`);
 
@@ -243,13 +248,13 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `acquisto`
 --
 ALTER TABLE `acquisto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 
 --
 -- AUTO_INCREMENT per la tabella `carrello`
 --
 ALTER TABLE `carrello`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT per la tabella `categoria`
@@ -273,7 +278,7 @@ ALTER TABLE `ordini`
 -- AUTO_INCREMENT per la tabella `preferiti`
 --
 ALTER TABLE `preferiti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT per la tabella `prodotti`
@@ -285,7 +290,7 @@ ALTER TABLE `prodotti`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- Limiti per le tabelle scaricate

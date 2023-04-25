@@ -1,4 +1,4 @@
-
+<?php session_start();?>
    <!-- Topbar Start -->
     <div class="container-fluid">
         <div class="row bg-secondary py-1 px-xl-5">
@@ -15,12 +15,27 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My Account</button>
                         <div class="dropdown-menu dropdown-menu-right">
-                        <a href="login.php">
+                        <?php
+                        require 'DatabaseClassSingleton.php';
+                        if(isset($_SESSION['id'])) {
+                            $result = DatabaseClassSingleton::getInstance()->Select("Select * from utente where id=". $_SESSION["id"]);
+                            foreach ($result as $row){
+                                $s = $row['nome'];
+                            }
+                            $s .= '<a href="chk/logout.php">
+                            <button class="dropdown-item" type="button" >Logout</button>
+                            </a> ';
+                        }
+                        else {
+                        $s ='<a href="login.php">
                             <button class="dropdown-item" type="button" >Sign in</button>
-                        </a>                      
+                            </a>                      
                         <a href="reg.php">
                             <button class="dropdown-item" type="button" >Sign up</button>
-                        </a>     
+                        </a>';
+                        }
+                        echo $s;     
+                        ?>
                         </div>
                     </div>
                     <div class="btn-group mx-2">
@@ -52,7 +67,7 @@
         </div>
         <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
             <div class="col-lg-4">
-                <a href="" class="text-decoration-none" href='index.php'>
+                <a href="index.php" class="text-decoration-none" href='index.php'>
                     <span class="h1 text-uppercase text-primary bg-dark px-2">Pontig</span>
                     <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Shop</span>
                 </a>
@@ -115,7 +130,7 @@
                             <a href="contact.php" class="nav-item nav-link active">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            <a href="" class="btn px-0">
+                            <a href="pref.php" class="btn px-0">
                                 <i class="fas fa-heart text-primary"></i>
                                 <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;"><?php include "home/countPref.php";?></span>
                             </a>

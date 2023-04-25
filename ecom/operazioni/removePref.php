@@ -4,6 +4,6 @@
 
     // prepare and bind
     $id = $_GET['id'];
-    DatabaseClassSingleton::getInstance()->Remove("Delete from acquisto where idC = ?",['i' , $id]);
+    DatabaseClassSingleton::getInstance()->Remove("Delete from preferiti where id = ?",['i' , $id]);
     header('Location: ' . $_SERVER['HTTP_REFERER']);
 ?>

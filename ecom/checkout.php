@@ -27,7 +27,7 @@
 </head>
 
 <body>
-<?php session_start(); include "navbar.php"; ?>
+<?php include "navbar.php"; ?>
 
 
     <!-- Breadcrumb Start -->

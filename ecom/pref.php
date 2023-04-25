@@ -36,8 +36,7 @@
             <div class="col-12">
                 <nav class="breadcrumb bg-light mb-30">
                     <a class="breadcrumb-item text-dark" href="index.php">Home</a>
-                    <a class="breadcrumb-item text-dark" href="index.php">Shop</a>
-                    <span class="breadcrumb-item active">Shopping Cart</span>
+                    <span class="breadcrumb-item active">Preferiti</span>
                 </nav>
             </div>
         </div>
@@ -54,29 +53,12 @@
                         <tr>
                             <th>Products</th>
                             <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Total</th>
-                            <th>Remove</th>
                         </tr>
                     </thead>
                     <tbody class="align-middle">
-                        <?php include 'carrello/cartElem.php' ?>
+                        <?php include 'preferiti/prefElem.php' ?>
                     </tbody>
                 </table>
-            </div>
-            <div class="col-lg-4">
-                <form class="mb-30" action="">
-                    <div class="input-group">
-                        <input type="text" class="form-control border-0 p-4" placeholder="Coupon Code">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary">Apply Coupon</button>
-                        </div>
-                    </div>
-                </form>
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Cart Summary</span></h5>
-                <div class="bg-light p-30 mb-5">
-                    <?php include 'calcoli/calcTotale.php' ?>
-                </div>
             </div>
         </div>
     </div>

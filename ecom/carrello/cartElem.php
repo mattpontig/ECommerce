@@ -1,10 +1,10 @@
 <?php
 $_SESSION['totProd'] = 0;
 if(isset($_SESSION["id"])){
-$result = DatabaseClassSingleton::getInstance()->Select("Select * from acquisto as ac join prodotti as p on ac.idArticolo = p.id where idCarrello=". $_SESSION["carrelloId"]);
+$result = DatabaseClassSingleton::getInstance()->Select("Select * from acquisto as ac join prodotti as p on ac.idArticolo = p.id where idCarrello=". $_SESSION["idCarrello"]);
 foreach ($result as $row) {
 $s =                    '<tr>
-                            <td class="align-middle"><img src="img/product-5.jpg" alt="" style="width: 50px;"> '. $row["nome"] .'/td>
+                            <td class="align-middle"><img src="img/product-5.jpg" alt="" style="width: 50px;"> '. $row["nome"] .'</td>
                             <td class="align-middle">'. $row["prezzo"] .'</td>
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
@@ -22,7 +22,7 @@ $s =                    '<tr>
                                 </div>
                             </td>
                             <td class="align-middle">$'. $row["prezzo"] * $row["quantit"] .'</td>
-                            <td class="align-middle"><a class="h6 text-decoration-none text-truncate" href="operazioni/remove.php?id=' . $row["id"] . '">' . 'X' . "</a>".'</td>
+                            <td class="align-middle"><a class="h6 text-decoration-none text-truncate" href="operazioni/remove.php?id=' . $row["idC"] . '">' . 'X' . "</a>".'</td>
                         </tr>';
     echo $s;
     $_SESSION['totProd'] += $row["prezzo"] * $row["quantit"];

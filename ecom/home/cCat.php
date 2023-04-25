@@ -1,6 +1,7 @@
 <?php
-if(isset($_GET['id']))
-    $_SESSION['cat'] = $_GET['id'];
-else unset($_SESSION['cat']);
-header("Location: ../index.php");
+if(isset($_GET['id'])){
+    header("Location: ../index.php?cat=" . $_GET['id']);
+}
+else 
+    header("Location: ../index.php");
 ?>

@@ -10,7 +10,14 @@
     foreach ($result as $row){
     // output data of each row
         $_SESSION["id"] = $row["id"];
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
-        exit();
     }
+
+    $result = DatabaseClassSingleton::getInstance()->Select("Select * from carrello where idUtente=". $_SESSION["id"]);
+    foreach ($result as $row){
+    // output data of each row
+        $_SESSION["idCarrello"] = $row["id"];
+    }
+
+    header('Location:../index.php ');
+    exit();
 ?>
