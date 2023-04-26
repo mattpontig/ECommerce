@@ -4,10 +4,6 @@
     <input class="form-control" type="text" placeholder="John">
 </div>
 <div class="col-md-6 form-group">
-    <label>Last Name</label>
-    <input class="form-control" type="text" placeholder="Doe">
-</div>
-<div class="col-md-6 form-group">
     <label>E-mail</label>
     <input class="form-control" type="text" placeholder="example@email.com">
 </div>
@@ -37,17 +33,7 @@
     <input class="form-control" type="text" placeholder="New York">
 </div>
 <div class="col-md-6 form-group">
-    <label>State</label>
-    <input class="form-control" type="text" placeholder="New York">
-</div>
-<div class="col-md-6 form-group">
     <label>ZIP Code</label>
     <input class="form-control" type="text" placeholder="123">
-</div>
-<div class="col-md-12">
-    <div class="custom-control custom-checkbox">
-        <input type="checkbox" class="custom-control-input" id="shipto">
-        <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
-    </div>
 </div>';
 ?>

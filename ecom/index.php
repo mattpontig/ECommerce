@@ -28,7 +28,8 @@
 
 <body>
 
-    <?php include "navbar.php";
+    <?php 
+    include "navbar.php";
     ?>
 
     <!-- Carousel Start -->

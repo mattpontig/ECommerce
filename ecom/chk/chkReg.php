@@ -31,7 +31,7 @@
                 $_SESSION["idCarrello"] = $row["id"];
             }
 
-            header('Location:../index.php');
+            header('Location:../cookie/cLogin.php');
         }
     }
     }

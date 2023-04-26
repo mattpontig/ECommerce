@@ -1,7 +1,5 @@
 <?php
-$_SESSION['totProd'] = 0;
-if(isset($_SESSION["id"])){
-$result = DatabaseClassSingleton::getInstance()->Select("Select * from acquisto as ac join prodotti as p on ac.idArticolo = p.id where idCarrello=". $_SESSION["idCarrello"]);
+$result = DatabaseClassSingleton::getInstance()->Select("Select * from ordini as ac join prodotti as p on ac.idArticolo = p.id where idCarrello=". $_SESSION["idCarrello"]);
 foreach ($result as $row) {
 
     $s ='<tr>
@@ -25,8 +23,7 @@ foreach ($result as $row) {
             <td class="align-middle">$'. $row["prezzo"] * $row["quantit"] .'</td>
             <td class="align-middle"><a class="h6 text-decoration-none text-truncate" href="operazioni/remove.php?id=' . $row["idC"] . '">' . 'X' . "</a>".'</td>
     </tr>';
+}
     echo $s;
-    $_SESSION['totProd'] += $row["prezzo"] * $row["quantit"];
-}
-}
+
 ?>

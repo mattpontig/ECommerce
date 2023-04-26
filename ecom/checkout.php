@@ -53,6 +53,12 @@
                 <div class="bg-light p-30 mb-5">
                     <div class="row">
                         <?php include 'checkout/billingAdd.php';?>
+                        <div class="col-md-12">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="shipto">
+                        <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
+                    </div>
+                </div>
                     </div>
                 </div>
                 <div class="collapse mb-5" id="shipping-address">
@@ -109,7 +115,9 @@
                                 <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
                             </div>
                         </div>
+                        <a href='completaOrdine.php'>
                         <button class="btn btn-block btn-primary font-weight-bold py-3">Place Order</button>
+                        </a>
                     </div>
                 </div>
             </div>
