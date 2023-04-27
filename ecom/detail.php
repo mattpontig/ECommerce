@@ -30,7 +30,7 @@
 <?php include "navbar.php";
 $_SESSION["prod"] = $_GET["id"];
 $result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti where id=" . $_GET["id"]);
-foreach ($result as $row) $r = $row;
+foreach ($result as $row) $rw = $row;
 ?>
 
 
@@ -67,22 +67,18 @@ foreach ($result as $row) $r = $row;
                     </a>
                 </div>
             </div>
-
+            <?php include 'review/countRev.php'; ?>
             <div class="col-lg-7 h-auto mb-30">
                 <div class="h-100 bg-light p-30">
-                    <h3><?php   echo $r["nome"]; ?></h3>
+                    <h3><?php   echo $rw["nome"]; ?></h3>
                     <div class="d-flex mb-3">
                         <div class="text-primary mr-2">
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star-half-alt"></small>
-                            <small class="far fa-star"></small>
+                            <?php echo $str ?>
                         </div>
-                        <small class="pt-1">(99 Reviews)</small>
+                        <small class="pt-1">(<?php echo $t?> Reviews)</small>
                     </div>
-                    <h3 class="font-weight-semi-bold mb-4"><?php   echo $r["prezzo"]; ?></h3>
-                    <p class="mb-4"><?php   echo $r["des"]; ?></p>
+                    <h3 class="font-weight-semi-bold mb-4"><?php   echo $rw["prezzo"]; ?></h3>
+                    <p class="mb-4"><?php   echo $rw["des"]; ?></p>
                     <!--<div class="d-flex mb-3">
                         <strong class="text-dark mr-3">Sizes:</strong>
                         <form>
@@ -140,15 +136,17 @@ foreach ($result as $row) $r = $row;
                                     <i class="fa fa-minus"></i>
                                 </button>
                             </div>
-                            <input type="text" class="form-control bg-secondary border-0 text-center" value="1">
-                            <div class="input-group-btn">
+                        <div class="input-group-btn">
                                 <button class="btn btn-primary btn-plus">
                                     <i class="fa fa-plus"></i>
                                 </button>
                             </div>
+                        <form action="carrello/addCarr.php" method="post">
+                            <input type="number" class="form-control bg-secondary border-0 text-center" name ='nProd' value="1">
                         </div>
-                        <button class="btn btn-primary px-3" href='addCarr.php'><i class="fa fa-shopping-cart mr-1"></i> Add To
+                        <button type='submit' class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
                             Cart</button>
+                    </form>
                     </div>
                     <div class="d-flex pt-2">
                         <strong class="text-dark mr-2">Share on:</strong>
@@ -181,7 +179,7 @@ foreach ($result as $row) $r = $row;
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="tab-pane-1">
                             <h4 class="mb-3">Product Description</h4>
-                            <p><?php   echo $r["des"]; ?>
+                            <p><?php   echo $rw["des"]; ?>
                         </div>
                         <div class="tab-pane fade" id="tab-pane-2">
                             <h4 class="mb-3">Additional Information</h4>
@@ -234,7 +232,7 @@ foreach ($result as $row) $r = $row;
                                             <p class="mb-0 mr-2">Your Rating * :</p>
                                             <div class="text-primary">
                                                 <i class="far fa-star"></i>
-                                                <input type="number" class="form-control" id="nStart" name="nStart">
+                                                <input type="number" class="form-control" min="0" max="5" id="nStart" name="nStart">
                                             </div>
                                         </div>
                                         <div class="form-group">

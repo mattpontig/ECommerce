@@ -1,9 +1,14 @@
 <?php
 $w = '1';
+$s = "";
 if(isset($_SESSION['cat']))
     $w = 'id=' . $_SESSION['cat'];
-    $result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti where " . $w);
+    
+$result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti where " . $w);
+
     foreach ($result as $row) {
+
+    include "review/countRev.php";
     $s = '
     <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                     <div class="product-item bg-light mb-4">
@@ -17,13 +22,7 @@ if(isset($_SESSION['cat']))
                         <div class="text-center py-4">';
     $s2 = '<div class="d-flex align-items-center justify-content-center mt-2">';
     $s3 = '</div>
-    <div class="d-flex align-items-center justify-content-center mb-1">
-        <small class="fa fa-star text-primary mr-1"></small>
-        <small class="fa fa-star text-primary mr-1"></small>
-        <small class="fa fa-star text-primary mr-1"></small>
-        <small class="far fa-star text-primary mr-1"></small>
-        <small class="far fa-star text-primary mr-1"></small>
-        <small>(99)</small>
+    <div class="d-flex align-items-center justify-content-center mb-1">'. $str .'<small>('. $t . ')</small>
     </div>
 </div>
 </div>

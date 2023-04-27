@@ -2,12 +2,14 @@
   session_start();
   require '../DatabaseClassSingleton.php';
     $nProd = 1;
-    if(isset($_SESSION["nProd"])){
-      $nProd = $_SESSION["nProd"];
+    if(isset($_POST["nProd"])){
+      $nProd = $_POST["nProd"];
     }
 
     $idC = $_SESSION["idCarrello"];
-    $id = $_GET["id"];
+    if(isset($_GET["id"]))
+      $id = $_GET["id"];
+    else $id = $_SESSION["prod"];
 
     DatabaseClassSingleton::getInstance()->Insert("Insert into acquisto( `idArticolo` , `quantit`,`idCarrello`) values ( ? , ? ,?)", [
       'iii', $id , $nProd,$idC]);

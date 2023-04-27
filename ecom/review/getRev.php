@@ -14,4 +14,5 @@ $s ='<h4 class="mb-4">'. $_SESSION['prod'] . 'review for "Product Name"</h4>
                                             <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
                                         </div>
                                     </div>';
+     
 ?>
