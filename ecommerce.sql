@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Apr 25, 2023 alle 18:18
+-- Creato il: Apr 27, 2023 alle 21:36
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.2.4
 
@@ -34,17 +34,6 @@ CREATE TABLE `acquisto` (
   `idCarrello` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dump dei dati per la tabella `acquisto`
---
-
-INSERT INTO `acquisto` (`idC`, `quantit`, `idArticolo`, `idCarrello`) VALUES
-(40, 1, 1, 7),
-(41, 1, 1, 7),
-(42, 1, 1, 7),
-(43, 1, 2, 7),
-(44, 1, 1, 7);
-
 -- --------------------------------------------------------
 
 --
@@ -63,7 +52,8 @@ CREATE TABLE `carrello` (
 
 INSERT INTO `carrello` (`id`, `data`, `idUtente`) VALUES
 (7, '0000-00-00 00:00:00', 17),
-(8, '0000-00-00 00:00:00', 18);
+(8, '0000-00-00 00:00:00', 18),
+(9, '0000-00-00 00:00:00', 19);
 
 -- --------------------------------------------------------
 
@@ -99,6 +89,13 @@ CREATE TABLE `comstar` (
   `commenti` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dump dei dati per la tabella `comstar`
+--
+
+INSERT INTO `comstar` (`id`, `idUtente`, `idProdotto`, `stelle`, `commenti`) VALUES
+(1, 17, 1, 5, '6tt');
+
 -- --------------------------------------------------------
 
 --
@@ -110,7 +107,9 @@ CREATE TABLE `ordini` (
   `data` date NOT NULL,
   `ora` time NOT NULL,
   `prezzo` int(11) NOT NULL,
-  `idUtente` int(11) NOT NULL
+  `idCarrello` int(11) NOT NULL,
+  `Address` varchar(64) NOT NULL,
+  `City` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -120,7 +119,7 @@ CREATE TABLE `ordini` (
 --
 
 CREATE TABLE `preferiti` (
-  `id` int(11) NOT NULL,
+  `idPref` int(11) NOT NULL,
   `idProd` int(11) NOT NULL,
   `idUtente` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -129,8 +128,8 @@ CREATE TABLE `preferiti` (
 -- Dump dei dati per la tabella `preferiti`
 --
 
-INSERT INTO `preferiti` (`id`, `idProd`, `idUtente`) VALUES
-(3, 2, 17);
+INSERT INTO `preferiti` (`idPref`, `idProd`, `idUtente`) VALUES
+(6, 1, 17);
 
 -- --------------------------------------------------------
 
@@ -146,17 +145,16 @@ CREATE TABLE `prodotti` (
   `prezzo` int(11) NOT NULL,
   `idCat` int(11) NOT NULL,
   `sconto` int(11) DEFAULT NULL,
-  `img` int(11) DEFAULT NULL,
-  `autore` varchar(16) DEFAULT NULL
+  `img` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `prodotti`
 --
 
-INSERT INTO `prodotti` (`id`, `nome`, `des`, `quant`, `prezzo`, `idCat`, `sconto`, `img`, `autore`) VALUES
-(1, 'Prova', 'Descrizione prova', 32, 40, 1, NULL, NULL, NULL),
-(2, 'Prova2', 'Descrizione prova2', 6, 25, 2, NULL, NULL, NULL);
+INSERT INTO `prodotti` (`id`, `nome`, `des`, `quant`, `prezzo`, `idCat`, `sconto`, `img`) VALUES
+(1, 'Prova', 'Descrizione prova', 32, 40, 1, NULL, NULL),
+(2, 'Prova2', 'Descrizione prova2', 6, 25, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -168,16 +166,18 @@ CREATE TABLE `utente` (
   `id` int(11) NOT NULL,
   `nome` varchar(16) NOT NULL,
   `email` varchar(32) NOT NULL,
-  `password` varchar(32) NOT NULL
+  `password` varchar(32) NOT NULL,
+  `admin` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`id`, `nome`, `email`, `password`) VALUES
-(17, 'Pontig', 'tione004@gmail.com', 'e10adc3949ba59abbe56e057f20f883e'),
-(18, 'r', 'mattia.pontig04@gmail.com', 'e10adc3949ba59abbe56e057f20f883e');
+INSERT INTO `utente` (`id`, `nome`, `email`, `password`, `admin`) VALUES
+(17, 'Pontig', 'tione004@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0),
+(18, 'r', 'mattia.pontig04@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0),
+(19, 'admin', 'admin@admin', '21232f297a57a5a743894a0e4a801fc3', 1);
 
 --
 -- Indici per le tabelle scaricate
@@ -217,13 +217,13 @@ ALTER TABLE `comstar`
 --
 ALTER TABLE `ordini`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `idUtente` (`idUtente`);
+  ADD KEY `idCarrello` (`idCarrello`);
 
 --
 -- Indici per le tabelle `preferiti`
 --
 ALTER TABLE `preferiti`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`idPref`),
   ADD KEY `idProd` (`idProd`,`idUtente`),
   ADD KEY `idUtente` (`idUtente`);
 
@@ -248,13 +248,13 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `acquisto`
 --
 ALTER TABLE `acquisto`
-  MODIFY `idC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `idC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
 
 --
 -- AUTO_INCREMENT per la tabella `carrello`
 --
 ALTER TABLE `carrello`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT per la tabella `categoria`
@@ -266,7 +266,7 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT per la tabella `comstar`
 --
 ALTER TABLE `comstar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT per la tabella `ordini`
@@ -278,7 +278,7 @@ ALTER TABLE `ordini`
 -- AUTO_INCREMENT per la tabella `preferiti`
 --
 ALTER TABLE `preferiti`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idPref` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT per la tabella `prodotti`
@@ -290,7 +290,7 @@ ALTER TABLE `prodotti`
 -- AUTO_INCREMENT per la tabella `utente`
 --
 ALTER TABLE `utente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Limiti per le tabelle scaricate
@@ -320,7 +320,7 @@ ALTER TABLE `comstar`
 -- Limiti per la tabella `ordini`
 --
 ALTER TABLE `ordini`
-  ADD CONSTRAINT `ordini_ibfk_1` FOREIGN KEY (`idUtente`) REFERENCES `utente` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `ordini_ibfk_1` FOREIGN KEY (`idCarrello`) REFERENCES `carrello` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Limiti per la tabella `preferiti`

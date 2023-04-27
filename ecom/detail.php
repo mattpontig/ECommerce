@@ -222,7 +222,7 @@ foreach ($result as $row) $rw = $row;
                         <div class="tab-pane fade" id="tab-pane-3">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <?php include 'review/getRev.php'; ?>
+                                    <?php include 'review/getRev.php';?>
                                 </div>
                                 <div class="col-md-6">
                                     <h4 class="mb-4">Leave a review</h4>

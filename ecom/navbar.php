@@ -23,7 +23,12 @@
                             $result = DatabaseClassSingleton::getInstance()->Select("Select * from utente where id=". $_SESSION["id"]);
                             foreach ($result as $row){
                                 $s = $row['nome'];
+                                $_SESSION['admin'] = $row['admin'];
                             }
+                            if($_SESSION['admin'] == 1)
+                            $s .= '<a href="addProd.php">
+                            <button class="dropdown-item" type="button" >Add Prod</button>
+                            </a> ';
                             $s .= '<a href="chk/logout.php">
                             <button class="dropdown-item" type="button" >Logout</button>
                             </a> ';
