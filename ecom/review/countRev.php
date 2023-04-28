@@ -1,7 +1,11 @@
 <?php
 $t = 0;
 $st = 0;
-    $res = DatabaseClassSingleton::getInstance()->Select("Select * from comstar where idProdotto=". $_SESSION["prod"]);
+if(isset($_SESSION["prod"])){
+    $p = $_SESSION["prod"];
+}else $p = $row["id"];
+
+    $res = DatabaseClassSingleton::getInstance()->Select("Select * from comstar where idProdotto=". $p);
         foreach ($res as $r) {
           $t = $t+1;
           $st .= $r['stelle'];
