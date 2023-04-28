@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if($_SESSION['admin']){
 	//Costruisco il path completo di destinazione
@@ -43,7 +42,7 @@ if($_SESSION['admin']){
     }
     
     DatabaseClassSingleton::getInstance()->Insert("Insert into prodotti( `nome` , `des`,`quant`,`prezzo`,`idCat`,`img`) values ( ? , ? ,?,?,?,?)", [
-        'ssifis', $id , $nProd,$idC]);
+        'ssifis',$_POST['name'], $_POST['desc'] , $_POST['quant'],$_POST['prezzo'],$_POST['cmbRep'],basename($_FILES['userfile']['name'])]);
       header('Location: ' . $_SERVER['HTTP_REFERER']);
       exit();
 

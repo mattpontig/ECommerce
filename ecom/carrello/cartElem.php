@@ -5,7 +5,7 @@ $result = DatabaseClassSingleton::getInstance()->Select("Select * from acquisto 
 foreach ($result as $row) {
 
     $s ='<tr>
-        <td class="align-middle"><img src="img/product-5.jpg" alt="" style="width: 50px;"> '. $row["nome"] .'</td>
+        <td class="align-middle"><img src="img/'. $row["img"] .'" alt="" style="width: 50px;"> '. $row["nome"] .'</td>
         <td class="align-middle">'. $row["prezzo"] .'</td>
         <td class="align-middle">
         <form action="carrello/modQuant.php" method="post">

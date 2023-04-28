@@ -40,11 +40,11 @@
         </div>
         <div class="form-group">
           <label for="text">Quantità</label>
-          <input type="text" class="form-control" name="quant" placeholder="Inserisci la quantità">
+          <input type="number" class="form-control" name="quant" placeholder="Inserisci la quantità">
         </div>
         <div class="form-group">
           <label for="text">Prezzo</label>
-          <input type="text" class="form-control" name="prezzo" placeholder="Inserisci il prezzo">
+          <input type="number" class="form-control" name="prezzo" placeholder="Inserisci il prezzo">
         </div>
         <div class="form-group">
           <label for="file">Categoria</label>

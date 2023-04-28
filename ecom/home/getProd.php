@@ -7,13 +7,13 @@ if(isset($_SESSION['cat']))
 $result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti where " . $w);
 
     foreach ($result as $row) {
-
+        $_SESSION["prod"] = $row["id"] ;
     include "review/countRev.php";
     $s = '
     <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
                     <div class="product-item bg-light mb-4">
                         <div class="product-img position-relative overflow-hidden">
-                            <img class="img-fluid w-100" src="img/product-4.jpg" alt="">
+                            <img class="img-fluid w-100" src="img/'. $row["img"] .'" alt="">
                             <div class="product-action">
                                 <a class="btn btn-outline-dark btn-square" href="carrello/addCarr.php?id=' . $row["id"] . '"><i class="fa fa-shopping-cart"></i></a>
                                 <a class="btn btn-outline-dark btn-square" href="home/addPref.php?id=' . $row["id"] . '"><i class="far fa-heart"></i></a>
