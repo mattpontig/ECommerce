@@ -52,10 +52,9 @@
             <?php include "home/getCatSelect.php" ?>
           </select>
         </div>
-
         <div class="form-group">
           <label for="file">Immagine</label>
-          <input type="file" class="form-control" name="userfile">
+          <input type="file" class="form-control" name="fileToUpload" id="fileToUpload">
         </div>
         <button type="submit" class="btn btn-primary">Aggiungi</button>
       </form>
