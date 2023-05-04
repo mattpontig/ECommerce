@@ -30,6 +30,7 @@
 
     <?php 
     include "navbar.php";
+    echo $_SESSION['lastIdCarrello'];
     ?>
 
         <!-- Contact Start -->

@@ -1,5 +1,6 @@
 <?php
-            DatabaseClassSingleton::getInstance()->Insert("Insert into carrello (`data` , `idUtente`) values ( ? , ?)", ['di', date("Y/m/d") , $id]);
+            $_SESSION["lastIdCarrello"] = $_SESSION["idCarrello"];
+            DatabaseClassSingleton::getInstance()->Insert("Insert into carrello (`idUtente`) values ( ?)", ['i', &$_SESSION["id"]]);
             
             $result = DatabaseClassSingleton::getInstance()->Select("Select * from carrello where idUtente=". $_SESSION["id"]);
             foreach ($result as $row){

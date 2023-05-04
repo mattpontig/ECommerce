@@ -13,11 +13,7 @@
 </div>
 <div class="col-md-6 form-group">
     <label>Address Line 1</label>
-    <input class="form-control" type="text" placeholder="123 Street">
-</div>
-<div class="col-md-6 form-group">
-    <label>Address Line 2</label>
-    <input class="form-control" type="text" placeholder="123 Street">
+    <input class="form-control" type="text" name="addr" placeholder="123 Street">
 </div>
 <div class="col-md-6 form-group">
     <label>Country</label>
@@ -30,10 +26,10 @@
 </div>
 <div class="col-md-6 form-group">
     <label>City</label>
-    <input class="form-control" type="text" placeholder="New York">
+    <input class="form-control" type="text" name="city" placeholder="New York">
 </div>
 <div class="col-md-6 form-group">
     <label>ZIP Code</label>
-    <input class="form-control" type="text" placeholder="123">
+    <input class="form-control" type="text" name="zip" placeholder="123">
 </div>';
 ?>

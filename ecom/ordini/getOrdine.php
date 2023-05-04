@@ -1,30 +1,19 @@
 <?php
-
-    $result = DatabaseClassSingleton::getInstance()->Select("Select * from ordini as or join utente ut p on ac.idArticolo = p.id where idCarrello=". $_SESSION["idCarrello"]);
+    $result = DatabaseClassSingleton::getInstance()->Select("Select * from ((ordini join carrello on ordini.idCarrello = carrello.id) join acquisto on ordini.idCarrello =acquisto.idCarrello)
+    join prodotti on acquisto.idArticolo = prodotti.id where ordini.idCarrello=". $_SESSION["lastIdCarrello"]);
+    $s = '<table><th>img</th><th>Nome</th><th>Quantita</th><th>Prezzo</th><th>Totale</th>';
+    $t = '';
     foreach ($result as $row) {
-
-        $s ='<tr>
-            <td class="align-middle"><img src="img/'. $row["img"] .'" alt="" style="width: 50px;"> '. $row["nome"] .'</td>
-            <td class="align-middle">'. $row["prezzo"] .'</td>
-            <td class="align-middle">
-            <div class="input-group quantity mx-auto" style="width: 100px;">
-                <div class="input-group-btn">
-                    <button class="btn btn-sm btn-primary btn-minus" >
-                        <i class="fa fa-minus"></i>
-                    </button>
-                </div>
-                <input type="text" class="form-control form-control-sm bg-secondary border-0 text-center" value="' . $row["quantit"] .'">
-                <div class="input-group-btn">
-                <button class="btn btn-sm btn-primary btn-plus">
-                    <i class="fa fa-plus"></i>
-                </button>
-                    </div>
-                </div>
-                </td>
-                <td class="align-middle">$'. $row["prezzo"] * $row["quantit"] .'</td>
-                <td class="align-middle"><a class="h6 text-decoration-none text-truncate" href="operazioni/remove.php?id=' . $row["idC"] . '">' . 'X' . "</a>".'</td>
-        </tr>';
+        $t = $row["prezzoTot"];;
+        $s .='<tr>
+            <td class="align-middle"><img src="img/'. $row["img"] .'" alt="" style="width: 50px;"></td> '.
+            '<td class="align-middle">'. $row["nome"].'</td> '.
+            '<td class="align-middle">'. $row["quantit"].'</td> '.
+            '<td class="align-middle">'. $row["prezzo"].'</td> '.
+            '<td class="align-middle">'. $row["prezzo"] * $row["quantit"].'</td> '.
+            '</tr>';
     }
+    $s = $s.'</table>Totale = ' .$t ;
         echo $s;
 
 ?>
