@@ -73,7 +73,7 @@ foreach ($result as $row) $rw = $row;
                     <h3><?php   echo $rw["nome"]; ?></h3>
                     <div class="d-flex mb-3">
                         <div class="text-primary mr-2">
-                            <?php echo $str ?>
+                            <?php echo $str; ?>
                         </div>
                         <small class="pt-1">(<?php echo $t?> Reviews)</small>
                     </div>
@@ -174,7 +174,7 @@ foreach ($result as $row) $rw = $row;
                     <div class="nav nav-tabs mb-4">
                         <a class="nav-item nav-link text-dark active" data-toggle="tab" href="#tab-pane-1">Description</a>
                         <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-2">Information</a>
-                        <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Reviews (<?php include 'getCountRev.php' ?>)</a>
+                        <a class="nav-item nav-link text-dark" data-toggle="tab" href="#tab-pane-3">Reviews (<?php  echo $t; ?>)</a>
                     </div>
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="tab-pane-1">

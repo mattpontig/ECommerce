@@ -9,9 +9,9 @@ foreach ($result as $row) {
             else 
                 $str .= '<i class="far fa-star"></i>';
     }
-    $s .='<h4 class="mb-4">'. $t . 'review for "'.$rw["nome"].'"</h4>
+    $s .='
                                     <div class="media mb-4">
-                                        <img src="../img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                        <img src="../img/defaultImg.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
                                         <div class="media-body">
                                             <h6>'. $row['nome'] .'<small> - <i>01 Jan 2045</i></small></h6>
                                             <div class="text-primary mb-2">

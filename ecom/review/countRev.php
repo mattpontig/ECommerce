@@ -8,7 +8,7 @@ if(isset($_SESSION["prod"])){
     $res = DatabaseClassSingleton::getInstance()->Select("Select * from comstar where idProdotto=". $p);
         foreach ($res as $r) {
           $t = $t+1;
-          $st .= $r['stelle'];
+          $st = $st +$r['stelle'];
     }
 
     if($t > 0)

@@ -35,8 +35,3 @@ $result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti 
     }
 
 ?>
-
-
-                        
-                           
-                        

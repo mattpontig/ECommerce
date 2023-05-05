@@ -85,7 +85,7 @@
                         <input type="text" class="form-control" placeholder="Search for products">
                         <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
-                                <i class="fa fa-search"></i>
+                                <a href='ricerca.php'> <i class="fa fa-search"></i></a>
                             </span>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
                             <a href="index.php" class="nav-item nav-link">Home</a>
-                            <a href="index.php" class="nav-item nav-link">Shop</a>
+                            <a href="shop.php" class="nav-item nav-link">Shop</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
                                 <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
