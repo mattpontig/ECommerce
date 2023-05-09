@@ -232,7 +232,7 @@ foreach ($result as $row) $rw = $row;
                                             <p class="mb-0 mr-2">Your Rating * :</p>
                                             <div class="text-primary">
                                                 <i class="far fa-star"></i>
-                                                <input type="number" class="form-control" min="0" max="5" id="nStart" name="nStart">
+                                                <input type="number" class="form-control" min="0" readonly max="<?php echo $row['quant']; ?>" id="nStart" name="nStart">
                                             </div>
                                         </div>
                                         <div class="form-group">

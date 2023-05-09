@@ -147,15 +147,4 @@ class DatabaseClassSingleton
         }
     }
 }
-
-//$db = new DatabaseClassSingleton("5a_ecommerce","5a_ecommerce", "root","");
-//$result = DatabaseClassSingleton::getInstance()->Select("Select * from articoli");
-//$result = DatabaseClassSingleton::getInstance()->Select("Select * from articoli");
-//$result = DatabaseClassSingleton::getInstance()->Select("Select * from articoli");
-
-
-//$result = $db->Select("Select * from TableName where id = ?",["i",$x]);
-
-/*foreach ($result as $row) {
-    echo $row["ID"] .  $row["nome"]  . $row["prezzo"] . "</br>";
-}*/
+?>

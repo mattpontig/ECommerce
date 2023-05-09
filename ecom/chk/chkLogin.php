@@ -18,6 +18,6 @@
         $_SESSION["idCarrello"] = $row["id"];
     }
 
-    header('Location:../cookie/cLogin.php');
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit();
 ?>

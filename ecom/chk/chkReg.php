@@ -25,7 +25,7 @@
             $_SESSION['id'] = $id;
 
             include '../carrello/createNew.php';
-            header('Location:../cookie/cLogin.php');
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
         }
     }
     }

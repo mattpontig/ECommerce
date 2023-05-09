@@ -1,5 +1,5 @@
 <?php session_start();
-    include 'cookie/cChkLogin.php';
+$_SESSION['carrello'] = array();;
     ?>
    <!-- Topbar Start -->
     <div class="container-fluid">

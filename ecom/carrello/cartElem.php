@@ -1,10 +1,10 @@
 <?php
+$s = "";
 $_SESSION['totProd'] = 0;
 if(isset($_SESSION["id"])){
 $result = DatabaseClassSingleton::getInstance()->Select("Select * from acquisto as ac join prodotti as p on ac.idArticolo = p.id where idCarrello=". $_SESSION["idCarrello"]);
 foreach ($result as $row) {
-
-    $s ='<tr>
+    $s .='<tr>
         <td class="align-middle"><img src="img/'. $row["img"] .'" alt="" style="width: 50px;"> '. $row["nome"] .'</td>
         <td class="align-middle">'. $row["prezzo"] .'</td>
         <td class="align-middle">
@@ -16,7 +16,7 @@ foreach ($result as $row) {
                         <i class="fa fa-minus"></i>
                     </button>
                 </div>
-                <input type="number" name="q" readonly max="9" class="form-control form-control-sm bg-secondary border-0 text-center" value="' . $row["quantit"] .'">
+                <input type="number" name="q" readonly max="'. $row['quant'].'" class="form-control form-control-sm bg-secondary border-0 text-center" value="' . $row["quantit"] .'">
                 <div class="input-group-btn">
                 <button class="btn btn-sm btn-primary btn-plus">
                     <i class="fa fa-plus"></i>
@@ -28,8 +28,42 @@ foreach ($result as $row) {
             <td class="align-middle">$'. $row["prezzo"] * $row["quantit"] .'</td>
             <td class="align-middle"><a class="h6 text-decoration-none text-truncate" href="operazioni/remove.php?id=' . $row["idC"] . '">' . 'X' . "</a>".'</td>
     </tr>';
-    echo $s;
     $_SESSION['totProd'] += $row["prezzo"] * $row["quantit"];
 }
 }
+else if(isset($_COOKIE["carrelloG"])){
+    $s = $_COOKIE["carrelloG"];
+    $v = explode(";", $s);
+    unset($v[count($v)-1]);
+    foreach ($v as $vett) {
+        $p = explode(",", $vett);
+        $result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti where id=". $p[0]);
+        foreach ($result as $row) {
+            $s .='<tr>
+                <td class="align-middle"><img src="img/'. $row["img"] .'" alt="" style="width: 50px;"> '. $row["nome"] .'</td>
+                <td class="align-middle">'. $row["prezzo"] .'</td>
+                <td class="align-middle">
+                <form action="carrello/modQuant.php" method="post">
+                    <div class="input-group quantity mx-auto" style="width: 100px;">
+                        <div class="input-group-btn">
+                            <button class="btn btn-sm btn-primary btn-minus" >
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                        <input type="number" name="q" readonly max="'. $row['quant'].'" class="form-control form-control-sm bg-secondary border-0 text-center" value="' . $p[1] .'">
+                        <div class="input-group-btn">
+                        <button class="btn btn-sm btn-primary btn-plus">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                        </div>
+                    </div>
+                </form>
+                    </td>
+                    <td class="align-middle">$'. $row["prezzo"] * $p[1] .'</td>
+                    <td class="align-middle"><a class="h6 text-decoration-none text-truncate" href="operazioni/remove.php?id=' . $p[1] . '">' . 'X' . "</a>".'</td>
+            </tr>';
+        }
+}
+}
+echo $s;
 ?>
