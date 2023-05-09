@@ -2,8 +2,9 @@
 
 class cookieClass
 { 
-
-
+    public static function getId(){
+        return $_COOKIE["carrello"];
+    }
     // Get mysqli connection
     public static function getCount()
     {
@@ -26,8 +27,11 @@ class cookieClass
             // output data of each row
                 if($row['m'] == 'NULL')
                     $row['m'] = 1;
-                $idC = $row['m'];
+                $idC = ($row['m'] +1);
             }
+            $cookie_name = "carrello";
+            $cookie_value = $idC;
+            setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
         }
         else $idC = $_COOKIE["carrello"];
         DatabaseClassSingleton::getInstance()->Insert("Insert into acquisto( `idArticolo` , `quantit`,`idCook`) values ( ? , ? ,?)", [
