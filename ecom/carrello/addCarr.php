@@ -3,18 +3,17 @@
   require '../DatabaseClassSingleton.php';
   require '../cookieClass.php';
     $nProd = 1;
-    if(isset($_POST["nProd"])){
-      $nProd = $_POST["nProd"];
+    if(isset($_GET["nProd"])){
+      $nProd = $_GET["nProd"];
     }
 
     if(isset($_SESSION["idCarrello"])){
     $idC = $_SESSION["idCarrello"];
     if(isset($_GET["id"]))
       $id = $_GET["id"];
-    else $id = $_SESSION["prod"];
 
     DatabaseClassSingleton::getInstance()->Insert("Insert into acquisto( `idArticolo` , `quantit`,`idCarrello`) values ( ? , ? ,?)", [
-      'iii', $id , $nProd,$idC]);
+      'iii', &$id , &$nProd,&$idC]);
     }
     else{
       cookieClass::addProd($_GET["id"],$nProd);

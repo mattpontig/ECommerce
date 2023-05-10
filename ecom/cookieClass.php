@@ -26,7 +26,7 @@ class cookieClass
             foreach ($result as $row){
             // output data of each row
                 if($row['m'] == 'NULL')
-                    $row['m'] = 1;
+                    $row['m'] = 0;
                 $idC = ($row['m'] +1);
             }
             $cookie_name = "carrello";

@@ -12,7 +12,7 @@ if(isset($_SESSION["id"])){
   DatabaseClassSingleton::getInstance()->Insert("Insert into preferiti ( `idProd` , `idUtente`) values ( ? , ? )", [
     'ii', $_GET['id'],$id]);
   }
-}
+}else
   header('Location: ' . $_SERVER['HTTP_REFERER']);
   exit();
 ?>

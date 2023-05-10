@@ -64,23 +64,23 @@
                         </div>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="radio" name="prezzo" value="100">
-                            <label>$0 - $100</label>
+                            <label>$100</label>
                         </div>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="radio" name="prezzo" value="200">
-                            <label>$100 - $200</label>
+                            <label>$200</label>
                         </div>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="radio" name="prezzo" value="300">
-                            <label>$200 - $300</label>
+                            <label>$300</label>
                         </div>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
                             <input type="radio" name="prezzo" value="400">
-                            <label>$300 - $400</label>
+                            <label>$400</label>
                         </div>
                         <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
                             <input type="radio" name="prezzo" value="500">
-                            <label>$400 - $500</label>                        
+                            <label>$500</label>                        
                         </div>
                 </div>
                 <!-- Price End -->

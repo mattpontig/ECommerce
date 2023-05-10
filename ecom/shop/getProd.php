@@ -32,13 +32,7 @@ $result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti 
             <div class="d-flex align-items-center justify-content-center mt-2">
                 <h5>$'.$row['prezzo'].'</h5><h6 class="text-muted ml-2"><del>$'.$row['prezzo'].'</del></h6>
             </div>
-            <div class="d-flex align-items-center justify-content-center mb-1">
-                <small class="fa fa-star text-primary mr-1"></small>
-                <small class="fa fa-star text-primary mr-1"></small>
-                <small class="fa fa-star text-primary mr-1"></small>
-                <small class="fa fa-star text-primary mr-1"></small>
-                <small class="fa fa-star-half-alt text-primary mr-1"></small>
-                <small>(99)</small>
+            <div class="d-flex align-items-center justify-content-center mb-1">'.$str .'<small>('.$t.')</small>
             </div>
         </div>
     </div>

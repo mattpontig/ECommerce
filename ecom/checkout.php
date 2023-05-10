@@ -27,7 +27,11 @@
 </head>
 
 <body>
-<?php include "navbar.php"; ?>
+<?php 
+    if(!isset($_SESSION["idCarrello"])) 
+        header("Location: login.php");
+    include "navbar.php"; 
+?>
 
 
     <!-- Breadcrumb Start -->

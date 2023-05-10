@@ -18,6 +18,16 @@
         $_SESSION["idCarrello"] = $row["id"];
     }
 
+    if(isset($_COOKIE['carrello'])){
+        $result = DatabaseClassSingleton::getInstance()->Select("Select * from acquisto where idCook='". $_COOKIE['carrello']."'");
+        foreach ($result as $row){
+        // output data of each row
+        DatabaseClassSingleton::getInstance()->Update("Update acquisto set `idCarrello` = ? where idC = ?",[
+            'ii', &$_SESSION["idCarrello"], &$row['idC'] ]);     
+        DatabaseClassSingleton::getInstance()->Update("Update acquisto set `idCook` = ? where idC = ?",[
+            'is', NULL, &$row['idC'] ]) ;     
+        }
+    }
     header('Location: ' . $_SERVER['HTTP_REFERER']);
     exit();
 ?>
