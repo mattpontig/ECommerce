@@ -1,8 +1,9 @@
 <?php
-$w = '1';
+$w = '';
 $s = "";
 if(isset($_SESSION['cat']))
     $w = 'idCat=' . $_SESSION['cat'];
+if($w == '') $w = '1';
 $result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti where " . $w);
 
     foreach ($result as $row) {

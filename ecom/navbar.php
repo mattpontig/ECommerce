@@ -83,12 +83,12 @@ $_SESSION['carrello'] = array();;
                 </a>
             </div>
             <div class="col-lg-4 col-6 text-left">
-                <form action="">
+                <form action="shop.php" method="post">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for products">
+                        <input type="text" name="text" class="form-control" placeholder="Search for products">
                         <div class="input-group-append">
                             <span class="input-group-text bg-transparent text-primary">
-                                <a href='ricerca.php'> <i class="fa fa-search"></i></a>
+                                <button> <i class="fa fa-search"></i></button>
                             </span>
                         </div>
                     </div>

@@ -12,6 +12,12 @@ if(isset($_SESSION["cat"]) and  $_SESSION["cat"] != "0"){
     $w = "idCat=" . $_SESSION["cat"];
     unset($_SESSION["cat"]);
 }
+if(isset($_SESSION["nome"])){
+    if($w != '1')
+        $w .= " AND ";
+    $w = "nome LIKE '%" . $_SESSION["nome"] . "%'";
+    unset($_SESSION["nome"]);
+}
 
 $result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti where " . $w);
 

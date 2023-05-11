@@ -75,14 +75,14 @@
                     <img class="img-fluid" src="img/libro.jpg" alt="">
                     <div class="offer-text">
                         <h3 class="text-white mb-3">Libri</h3>
-                        <a href="" class="btn btn-primary">Shop Now</a>
+                        <a href="shop.php?cat=2" class="btn btn-primary">Shop Now</a>
                     </div>
                 </div>
                 <div class="product-offer mb-30" style="height: 200px;">
                     <img class="img-fluid" src="img/elettronica.jpg" alt="">
                     <div class="offer-text">
                         <h3 class="text-white mb-3">Elettronica</h3>
-                        <a href="" class="btn btn-primary">Shop Now</a>
+                        <a href="shop.php?cat=1" class="btn btn-primary">Shop Now</a>
                     </div>
                 </div>
             </div>

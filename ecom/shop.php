@@ -54,6 +54,8 @@
                 <?php 
                 if(isset($_POST["prezzo"])) $_SESSION['p'] = $_POST["prezzo"];
                 if(isset($_POST["categoria"])) $_SESSION['cat'] = $_POST["categoria"];
+                else if(isset($_GET['cat']))$_SESSION['cat'] = $_GET['cat'];
+                if(isset($_POST['text'])) $_SESSION['nome'] = $_POST['text'];
                 ?>
                 <!-- Price Start -->
                 <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Filter by price</span></h5>
