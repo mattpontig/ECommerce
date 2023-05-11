@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Creato il: Mag 04, 2023 alle 22:55
+-- Creato il: Mag 11, 2023 alle 17:17
 -- Versione del server: 10.4.28-MariaDB
 -- Versione PHP: 8.1.17
 
@@ -31,21 +31,39 @@ CREATE TABLE `acquisto` (
   `idC` int(11) NOT NULL,
   `quantit` int(11) NOT NULL,
   `idArticolo` int(11) NOT NULL,
-  `idCarrello` int(11) NOT NULL
+  `idCarrello` int(11) DEFAULT NULL,
+  `idCook` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `acquisto`
 --
 
-INSERT INTO `acquisto` (`idC`, `quantit`, `idArticolo`, `idCarrello`) VALUES
-(67, 1, 6, 7),
-(68, 1, 6, 13),
-(69, 1, 6, 14),
-(70, 1, 2, 15),
-(71, 1, 1, 16),
-(72, 1, 2, 17),
-(73, 1, 6, 17);
+INSERT INTO `acquisto` (`idC`, `quantit`, `idArticolo`, `idCarrello`, `idCook`) VALUES
+(67, 1, 6, 7, NULL),
+(68, 1, 6, 13, NULL),
+(69, 1, 6, 14, NULL),
+(70, 1, 2, 15, NULL),
+(71, 1, 1, 16, NULL),
+(72, 1, 2, 17, NULL),
+(73, 1, 6, 17, NULL),
+(74, 5, 6, 18, NULL),
+(75, 7, 6, 19, NULL),
+(76, 5, 6, 20, NULL),
+(118, 1, 1, 21, NULL),
+(119, 1, 1, 22, NULL),
+(120, 1, 2, 23, NULL),
+(121, 1, 6, 23, NULL),
+(122, 1, 2, 24, NULL),
+(123, 1, 1, 25, NULL),
+(126, 1, 1, 26, NULL),
+(127, 1, 1, 26, NULL),
+(128, 1, 1, 26, NULL),
+(129, 9, 1, 26, NULL),
+(130, 6, 1, 26, NULL),
+(132, 23, 1, 27, NULL),
+(134, 1, 2, 28, NULL),
+(135, 1, 2, 29, NULL);
 
 -- --------------------------------------------------------
 
@@ -72,7 +90,19 @@ INSERT INTO `carrello` (`id`, `data`, `idUtente`) VALUES
 (15, NULL, 17),
 (16, NULL, 17),
 (17, NULL, 17),
-(18, NULL, 17);
+(18, NULL, 17),
+(19, NULL, 17),
+(20, NULL, 17),
+(21, NULL, 17),
+(22, NULL, 17),
+(23, NULL, 17),
+(24, NULL, 17),
+(25, NULL, 17),
+(26, NULL, 17),
+(27, NULL, 17),
+(28, NULL, 17),
+(29, NULL, 17),
+(30, NULL, 17);
 
 -- --------------------------------------------------------
 
@@ -91,8 +121,8 @@ CREATE TABLE `categoria` (
 --
 
 INSERT INTO `categoria` (`id`, `tipo`, `img`) VALUES
-(1, 'Elettronica', 'default.png'),
-(2, 'Libri', 'default.png');
+(1, 'Elettronica', 'elettronica.jpg'),
+(2, 'Libri', 'libro.jpg');
 
 -- --------------------------------------------------------
 
@@ -113,7 +143,11 @@ CREATE TABLE `comstar` (
 --
 
 INSERT INTO `comstar` (`id`, `idUtente`, `idProdotto`, `stelle`, `commenti`) VALUES
-(1, 17, 1, 5, '6tt');
+(1, 17, 1, 5, '6tt'),
+(2, 17, 2, 3, 'not good'),
+(3, 17, 6, 4, 'molto'),
+(4, 17, 6, 2, 'molto'),
+(5, 17, 6, 1, 'bad');
 
 -- --------------------------------------------------------
 
@@ -142,7 +176,21 @@ INSERT INTO `ordini` (`id`, `data`, `ora`, `prezzoTot`, `idCarrello`, `Address`,
 (9, NULL, NULL, 50, 14, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
 (10, NULL, NULL, 25, 15, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
 (11, NULL, NULL, 40, 16, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
-(12, NULL, NULL, 75, 17, '', '', 0);
+(12, NULL, NULL, 75, 17, '', '', 0),
+(13, NULL, NULL, 250, 18, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
+(14, NULL, NULL, 350, 19, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
+(15, NULL, NULL, 250, 20, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
+(16, NULL, NULL, 40, 21, '', '', 0),
+(17, NULL, NULL, 40, 21, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
+(18, NULL, NULL, 40, 21, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
+(19, NULL, NULL, 40, 22, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
+(20, NULL, NULL, 350, 23, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
+(23, NULL, NULL, 300, 24, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
+(24, NULL, NULL, 40, 25, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
+(25, NULL, NULL, 720, 26, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
+(26, NULL, NULL, 920, 27, '', '', 0),
+(36, NULL, NULL, 300, 28, 'Via Giovanni Paolo II 108', 'Alzate Brianza', 22040),
+(37, NULL, NULL, 300, 29, 'Giovanni Paolo II', 'Alzate', 22040);
 
 -- --------------------------------------------------------
 
@@ -178,9 +226,9 @@ CREATE TABLE `prodotti` (
 --
 
 INSERT INTO `prodotti` (`id`, `nome`, `des`, `quant`, `prezzo`, `idCat`, `sconto`, `img`) VALUES
-(1, 'Prova', 'Descrizione prova', 32, 40, 1, NULL, 'default.png'),
-(2, 'Prova2', 'Descrizione prova2', 6, 25, 2, NULL, 'default.png'),
-(6, 'r', 'dddd', 5, 50, 1, NULL, 'galaGames.JPG');
+(1, 'Prova', 'Descrizione prova', 0, 40, 1, NULL, 'mouseProva.jpg'),
+(2, 'Prova2', 'Descrizione prova2', 2, 300, 2, NULL, 'libroProva.jpg'),
+(6, 'Prova3', 'dddd', 4, 50, 1, NULL, 'tastieraProva.jpg');
 
 -- --------------------------------------------------------
 
@@ -193,17 +241,20 @@ CREATE TABLE `utente` (
   `nome` varchar(16) NOT NULL,
   `email` varchar(32) NOT NULL,
   `password` varchar(32) NOT NULL,
-  `admin` int(11) NOT NULL DEFAULT 0
+  `admin` int(11) NOT NULL DEFAULT 0,
+  `via` varchar(64) DEFAULT NULL,
+  `citta` varchar(32) DEFAULT NULL,
+  `cap` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dump dei dati per la tabella `utente`
 --
 
-INSERT INTO `utente` (`id`, `nome`, `email`, `password`, `admin`) VALUES
-(17, 'Pontig', 'tione004@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0),
-(18, 'r', 'mattia.pontig04@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0),
-(19, 'admin', 'admin@admin', '21232f297a57a5a743894a0e4a801fc3', 1);
+INSERT INTO `utente` (`id`, `nome`, `email`, `password`, `admin`, `via`, `citta`, `cap`) VALUES
+(17, 'Pontig', 'tione004@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'Giovanni Paolo II', 'Alzate', 22040),
+(18, 'r', 'mattia.pontig04@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 0, 'Prova', 'Prova', NULL),
+(19, 'admin', 'admin@admin', '21232f297a57a5a743894a0e4a801fc3', 1, NULL, NULL, NULL);
 
 --
 -- Indici per le tabelle scaricate
@@ -274,13 +325,13 @@ ALTER TABLE `utente`
 -- AUTO_INCREMENT per la tabella `acquisto`
 --
 ALTER TABLE `acquisto`
-  MODIFY `idC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `idC` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=136;
 
 --
 -- AUTO_INCREMENT per la tabella `carrello`
 --
 ALTER TABLE `carrello`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT per la tabella `categoria`
@@ -292,19 +343,19 @@ ALTER TABLE `categoria`
 -- AUTO_INCREMENT per la tabella `comstar`
 --
 ALTER TABLE `comstar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT per la tabella `ordini`
 --
 ALTER TABLE `ordini`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT per la tabella `preferiti`
 --
 ALTER TABLE `preferiti`
-  MODIFY `idPref` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idPref` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT per la tabella `prodotti`
