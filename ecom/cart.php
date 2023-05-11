@@ -60,7 +60,7 @@
                         </tr>
                     </thead>
                     <tbody class="align-middle">
-                        <?php include 'carrello/cartElem.php' ?>
+                        <?php  include 'carrello/cartElem.php' ?>
                     </tbody>
                 </table>
             </div>
