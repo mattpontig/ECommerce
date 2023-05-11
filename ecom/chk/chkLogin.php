@@ -11,6 +11,7 @@
     // output data of each row
         $_SESSION["id"] = $row["id"];
     }
+    if(isset($_SESSION["id"])){
 
     $result = DatabaseClassSingleton::getInstance()->Select("Select * from carrello where idUtente=". $_SESSION["id"]);
     foreach ($result as $row){
@@ -28,6 +29,6 @@
             'is', NULL, &$row['idC'] ]) ;     
         }
     }
-    header('Location: ' . $_SERVER['HTTP_REFERER']);
-    exit();
+}
+    header('Location: ../index.php');
 ?>

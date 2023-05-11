@@ -80,20 +80,9 @@ foreach ($result as $row) $rw = $row;
                     <h3 class="font-weight-semi-bold mb-4"><?php   echo $rw["prezzo"]; ?></h3>
                     <p class="mb-4"><?php   echo $rw["des"]; ?></p>
                     <div class="d-flex align-items-center mb-4 pt-2">
-                        <div class="input-group quantity mr-3" style="width: 130px;">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary btn-minus">
-                                    <i class="fa fa-minus"></i>
-                                </button>
-                            </div>
-                        <div class="input-group-btn">
-                                <button class="btn btn-primary btn-plus">
-                                    <i class="fa fa-plus"></i>
-                                </button>
-                            </div>
                         <form action="carrello/addCarr.php" method="get">
                             <?php echo '<input type="hidden" name="id" value="'.$_SESSION["prod"].'"/>';?>
-                            <input type="number" class="form-control bg-secondary border-0 text-center" name ='nProd' value="1">
+                            <?php echo '<input type="number" min="1" max="'. $row['quant'].'" name="nProd" class="form-control bg-secondary border-0 text-center" value="1">' ?>
                         </div>
                         <button type='submit' class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
                             Cart</button>

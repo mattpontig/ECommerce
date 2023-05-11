@@ -1,19 +1,22 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
+    $result = DatabaseClassSingleton::getInstance()->Select("Select * from utente where id = ". $_SESSION['id']);
+    foreach ($result as $row){
+    // output data of each row
     echo '<div class="col-md-6 form-group">
     <label>First Name</label>
-    <input class="form-control" type="text" placeholder="John">
+    <input class="form-control" type="text" value="'.$row['nome'].'">
 </div>
 <div class="col-md-6 form-group">
     <label>E-mail</label>
-    <input class="form-control" type="text" placeholder="example@email.com">
-</div>
-<div class="col-md-6 form-group">
-    <label>Mobile No</label>
-    <input class="form-control" type="text" placeholder="+123 456 789">
+    <input class="form-control" type="text" value="'.$row['email'].'">
 </div>
 <div class="col-md-6 form-group">
     <label>Address Line 1</label>
-    <input class="form-control" type="text" name="addr" placeholder="123 Street">
+    <input class="form-control" type="text" name="addr" value="'.$row['via'].'">
 </div>
 <div class="col-md-6 form-group">
     <label>Country</label>
@@ -26,10 +29,11 @@
 </div>
 <div class="col-md-6 form-group">
     <label>City</label>
-    <input class="form-control" type="text" name="city" placeholder="New York">
+    <input class="form-control" type="text" name="city" value="'.$row['citta'].'">
 </div>
 <div class="col-md-6 form-group">
     <label>ZIP Code</label>
-    <input class="form-control" type="text" name="zip" placeholder="123">
+    <input class="form-control" type="text" name="zip" value="'.$row['cap'].'">
 </div>';
+    }
 ?>

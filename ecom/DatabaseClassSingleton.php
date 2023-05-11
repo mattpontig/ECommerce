@@ -1,11 +1,5 @@
 <?php
 
-function writeLog($msg)
-{
-    $file = fopen("log.txt", "a");
-    fwrite($file, $msg . "\n");
-    fclose($file);
-}
 
 class DatabaseClassSingleton
 { 
@@ -146,5 +140,22 @@ class DatabaseClassSingleton
             throw new Exception($e->getMessage());
         }
     }
+
+    public function beginTransaction()
+    {
+        $this->_connection->begin_transaction();
+    }
+
+
+    public function commit()
+    {
+        $this->_connection->commit();
+    }
+
+    public function rollback()
+    {
+        $this->_connection->rollback();
+    }
+    
 }
 ?>

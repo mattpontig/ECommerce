@@ -28,7 +28,8 @@
 
 <body>
 <?php 
-    if(!isset($_SESSION["idCarrello"])) 
+session_start();
+    if(!isset($_SESSION["id"])) 
         header("Location: login.php");
     include "navbar.php"; 
 ?>
@@ -57,23 +58,11 @@
             <form action='ordini/addOrdine.php' method="post">
                 <div class="bg-light p-30 mb-5">
                     <div class="row">
-                    <?php include 'checkout/billingAdd.php';?>
+                        <?php include 'checkout/billingAddr.php';?>
                         <div class="col-md-12">
-                    <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="shipto">
-                        <label class="custom-control-label" for="shipto"  data-toggle="collapse" data-target="#shipping-address">Ship to different address</label>
-                    </div>
                 </div>
                     </div>
                 </div>
-                <!--<div class="collapse mb-5" id="shipping-address">
-                    <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Shipping Address</span></h5>
-                    <div class="bg-light p-30">
-                        <div class="row">
-                            <?php //include 'checkout/billingAdd.php';?>
-                        </div>
-                    </div>
-                </div>-->
             </div>
                 <div class="col-lg-4">
                     <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Order Total</span></h5>
