@@ -12,7 +12,7 @@ foreach ($result as $row) {
         <td class="align-middle"><img src="img/'. $row["img"] .'" alt="" style="width: 50px;"> '. $row["nome"] .'</td>
         <td class="align-middle">'. $row["prezzo"] .'</td>
         <td class="align-middle">
-        <form action="carrello/modQuant.php" method="post">
+        <form action="carrello/modQuant.php" method="post" name="test">
             <input type="hidden" name="idC" value="'.$row["idC"].'" />'.
             /*<div class="input-group quantity mx-auto" style="width: 100px;">'.
                 <div class="input-group-btn">
@@ -20,7 +20,7 @@ foreach ($result as $row) {
                         <i class="fa fa-minus"></i>
                     </button>
                 </div>*/
-                '<input type="number" name="q" min="1" max="'. $row['quant'].'" class="form-control form-control-sm bg-secondary border-0 text-center" value="' . $row["quantit"] .'"><button>ok</button
+                '<input type="number" name="q" min="1" max="'. $row['quant'].'" class="form-control form-control-sm bg-secondary border-0 text-center" value="' . $row["quantit"] .'"/><button>ok</button>
                 './*<div class="input-group-btn">
                 <button class="btn btn-sm btn-primary btn-plus">
                     <i class="fa fa-plus"></i>
