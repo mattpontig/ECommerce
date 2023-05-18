@@ -4,6 +4,11 @@ $s = "";
 if(isset($_SESSION['cat']))
     $w = 'idCat=' . $_SESSION['cat'];
 if($w == '') $w = '1';
+
+if($w != '1')
+        $w .= " AND ";
+else $w = "";
+    $w .= " quant > 0 ";    
 $result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti where " . $w);
 
     foreach ($result as $row) {

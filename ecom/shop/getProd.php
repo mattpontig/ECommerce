@@ -9,16 +9,22 @@ if(isset($_SESSION["p"]) &&  $_SESSION["p"] != "0"){
 if(isset($_SESSION["cat"]) and  $_SESSION["cat"] != "0"){
     if($w != '1')
         $w .= " AND ";
-    $w = "idCat=" . $_SESSION["cat"];
+    else $w = "";
+    $w .= "idCat=" . $_SESSION["cat"];
     unset($_SESSION["cat"]);
 }
 if(isset($_SESSION["nome"])){
     if($w != '1')
         $w .= " AND ";
-    $w = "nome LIKE '%" . $_SESSION["nome"] . "%'";
+    else $w = "";
+    $w .= "nome LIKE '%" . $_SESSION["nome"] . "%'";
     unset($_SESSION["nome"]);
 }
-
+if($w != '1')
+        $w .= " AND ";
+else $w = "";
+    $w .= " quant > 0 ";    
+        
 $result = DatabaseClassSingleton::getInstance()->Select("Select * from prodotti where " . $w);
 
     foreach ($result as $row) {
