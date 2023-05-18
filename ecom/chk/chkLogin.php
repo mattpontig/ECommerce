@@ -29,6 +29,11 @@
             'is', NULL, &$row['idC'] ]) ;     
         }
     }
-}
     header('Location: ../index.php');
+}
+    else {
+        $msg = '<script>alert("Login Errato");</script>';
+        header('Location:../login.php?msg='.$msg);
+    }
+
 ?>

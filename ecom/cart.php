@@ -45,6 +45,12 @@
     <!-- Breadcrumb End -->
 
 
+    <?php 
+        if(isset($_SESSION['msg'])){
+            echo $_SESSION['msg'];
+            unset($_SESSION['msg']);
+        }
+    ?>
     <!-- Cart Start -->
     <div class="container-fluid">
         <div class="row px-xl-5">

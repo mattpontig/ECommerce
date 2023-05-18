@@ -17,7 +17,7 @@
         foreach ($result as $row){
           // output data of each row
           if($row['quant']-$row["quantit"] < 0)
-            throw new Exception('Errore!!!!!!!!');
+            throw new Exception('Quantità non valida !!!!!!!!');
             else{
           DatabaseClassSingleton::getInstance()->Update("Update prodotti set `quant` = ? where id = ?",[
             'ii', ($row['quant']-$row["quantit"]), &$row["idArticolo"]]);}
@@ -30,6 +30,7 @@
   } catch (Exception $e) {
       // Annullamento della transazione in caso di errore
       DatabaseClassSingleton::getInstance()->rollback();
+      $_SESSION['msg'] = $e;
       header('Location: ' . $_SERVER['HTTP_REFERER']);
       exit();
   }

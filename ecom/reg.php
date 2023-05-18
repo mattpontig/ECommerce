@@ -26,7 +26,11 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
   <body>
-  <?php include "navbar.php" ?>
+  <?php include "navbar.php";
+        if(isset($_GET['msg'])){
+          echo $_GET['msg'];
+        }
+  ?>
     <div class="container mt-5">
       <h1 class="text-center">Registrazione</h1>
       <form action="chk/chkReg.php" method="post">
