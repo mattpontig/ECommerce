@@ -128,7 +128,8 @@ foreach ($result as $row) $rw = $row;
                                 </div>
                                 <div class="col-md-6">
                                     <h4 class="mb-4">Leave a review</h4>
-                                    <small>Your email address will not be published. Required fields are marked *</small>
+                                    <?php if(isset($_SESSION["id"])){
+                                    $s = '<small>Your email address will not be published. Required fields are marked *</small>
                                     <form action="review/chkRev.php" method="get">
                                         <div class="d-flex my-3">
                                             <p class="mb-0 mr-2">Your Rating * :</p>
@@ -139,12 +140,14 @@ foreach ($result as $row) $rw = $row;
                                         </div>
                                         <div class="form-group">
                                             <label for="message">Your Review *</label>
-                                            <textarea id="message" cols="30" rows="5" class="form-control" name='txt'></textarea>
+                                            <textarea id="message" cols="30" rows="5" class="form-control" name="txt"></textarea>
                                         </div>
                                         <div class="form-group mb-0">
                                             <input type="submit" value="Leave Your Review" class="btn btn-primary px-3">
                                         </div>
-                                    </form>
+                                    </form>';
+                                    echo $s;
+                                    }else echo "non loggato"; ?>
                                 </div>
                             </div>
                         </div>
