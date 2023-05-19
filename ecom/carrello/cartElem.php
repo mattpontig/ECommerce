@@ -1,6 +1,7 @@
 <?php
 $s = "";
 $_SESSION['totProd'] = 0;
+try{
 if(isset($_SESSION["id"])){
 $result = DatabaseClassSingleton::getInstance()->Select("Select * from acquisto as ac join prodotti as p on ac.idArticolo = p.id where idCarrello=". $_SESSION["idCarrello"]);
 }else{
@@ -34,5 +35,6 @@ foreach ($result as $row) {
     </tr>';
     $_SESSION['totProd'] += $row["prezzo"] * $row["quantit"];
 }
+}catch(Exception $e){}
 echo $s;
 ?>
